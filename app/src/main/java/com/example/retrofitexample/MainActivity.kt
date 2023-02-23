@@ -16,13 +16,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(activityMainBinding.root)
 
 
-        //First we neeed to create Retrofit instance:
+        //First we need to init Retrofit instance:
         val retrofit = Retrofit.Builder()
             .baseUrl("https://dummyjson.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        //Next we need to create API instance:
+        //Next we need to init API instance:
         val productApi = retrofit.create(ProductAPI::class.java)
 
 
