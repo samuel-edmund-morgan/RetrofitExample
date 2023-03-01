@@ -2,6 +2,7 @@ package com.example.retrofitexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.retrofitexample.databinding.ActivityMainBinding
 import com.example.retrofitexample.retrofit.RetrofitInstance
 import kotlinx.coroutines.*
@@ -17,11 +18,20 @@ class MainActivity : AppCompatActivity() {
         //Let's run our GET request in coroutine by pressing button (we SHOULD NOT use
         // network requests in main thread
         activityMainBinding.button.setOnClickListener {
+            //In this example I make textView invisible
+            activityMainBinding.textView.visibility = View.GONE
+            activityMainBinding.progressBar.visibility = View.VISIBLE
+
             CoroutineScope(Dispatchers.IO).launch {
                 val retrofitInstance = RetrofitInstance.retrofit.getProductById(1)
                 //Change coroutine to main thread then
                 withContext(Dispatchers.Main){
-                    activityMainBinding.textView.text = retrofitInstance.title
+                    activityMainBinding.apply {
+                        textView.text = retrofitInstance.title
+                        progressBar.visibility = View.GONE
+                        textView.visibility = View.VISIBLE
+                    }
+
                 }
             }
         }
