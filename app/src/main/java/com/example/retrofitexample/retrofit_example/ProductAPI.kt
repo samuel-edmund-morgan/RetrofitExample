@@ -1,4 +1,4 @@
-package com.example.retrofitexample.retrofit
+package com.example.retrofitexample.retrofit_example
 
 import retrofit2.Response
 import retrofit2.http.*
@@ -6,7 +6,7 @@ import retrofit2.http.*
 interface ProductAPI {
     //GET, POST, PUT, DELETE
     @GET("products/{id}")
-    suspend fun getProductById(@Path("id") id: Int) : Product
+    suspend fun getProductById(@Path("id") id: Int) : Response<Product>
     //In function above we can return Response<Product> (I don't know what's the difference yet)
 
     //To get single static item:

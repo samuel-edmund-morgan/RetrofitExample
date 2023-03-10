@@ -1,5 +1,7 @@
-package com.example.retrofitexample.retrofit
+package com.example.retrofitexample
 
+import com.example.retrofitexample.retrofit_auth_example.AuthAPI
+import com.example.retrofitexample.retrofit_example.ProductAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,7 +22,7 @@ object RetrofitInstance {
 
 
     //First we need to init Retrofit instance (with client for debugging in Logcat):
-    val retrofit: ProductAPI by lazy {
+    val retrofit_product: ProductAPI by lazy {
         Retrofit.Builder()
             .baseUrl("https://dummyjson.com")
             .client(client)
@@ -30,5 +32,17 @@ object RetrofitInstance {
             //val productApi = retrofit.create(ProductAPI::class.java)
             .create(ProductAPI::class.java)
     }
+
+    val retrofit_auth: AuthAPI by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://dummyjson.com")
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            //Next we need to init API instance:
+            //val productApi = retrofit.create(ProductAPI::class.java)
+            .create(AuthAPI::class.java)
+    }
+
 
 }
