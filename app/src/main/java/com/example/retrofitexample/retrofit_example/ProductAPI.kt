@@ -13,10 +13,19 @@ interface ProductAPI {
     //@GET("products/1")
     //suspend fun getProduct() : Product
 
+    //Search item if API looks like this: https://dummyjson.com/products/search?q=phone
+    //@GET("products/search")
+    //suspend fun getItemBySearch(@Query("q") name: String) : Response<Product>
+
     // Make a GET request with query parameter (usually for auth keys)
     //@GET("products/1")
     //suspend fun getProduct(@Query("Specify the name of query parameter that API accepts (like: key)") key: String) : Product
 
+    //define static headers here:
+    //@Headers("Content-Type: application/json")
+    //@GET("auth/products/search")
+    //suspend fun getProductsByNameAuth(@Header("Authorization") token: String, @Query("q") name : String) : Response<Product>
+    //@Heaader above is dynamic and must be sent as a token parameter
 
     //If you want to post some json data to the server
     //If you want to attach JSON - you need to use @Body
