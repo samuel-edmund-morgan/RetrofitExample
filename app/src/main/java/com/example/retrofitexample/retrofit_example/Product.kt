@@ -1,5 +1,5 @@
 package com.example.retrofitexample.retrofit_example
-
+//mydataclass
 data class Product(
     val id: Int,
     val title: String,
